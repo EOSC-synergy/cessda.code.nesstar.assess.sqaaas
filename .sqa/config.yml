@@ -1,0 +1,64 @@
+config:
+  credentials: []
+  project_repos:
+    github.com/EOSC-synergy/sqaaas-tooling:
+      branch: fix/updatego
+      repo: https://github.com/EOSC-synergy/sqaaas-tooling
+    github.com/cessda/cessda.code.nesstar:
+      branch: main
+      repo: https://github.com/cessda/cessda.code.nesstar
+environment:
+  JPL_DOCKERFORCEBUILD: enabled
+  JPL_KEEPGOING: enabled
+sqa_criteria:
+  QC.Acc:
+    repos:
+      github.com/cessda/cessda.code.nesstar git:
+        commands:
+        - /usr/bin/env sh .sqa/script.royal_proud_weasel.sh
+        container: qc.acc_lapis_diplomatic_kingfisher
+  QC.Doc:
+    repos:
+      github.com/cessda/cessda.code.nesstar find_doc_files.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.ecru_aware_dingo.sh
+        container: qc.doc_polar_thankful_camel
+      github.com/cessda/cessda.code.nesstar git:
+        commands:
+        - /usr/bin/env sh .sqa/script.ochre_tolerant_bison.sh
+        container: qc.doc_jasmine_ardent_cormorant
+      github.com/cessda/cessda.code.nesstar markdownlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.mango_peppy_tortoise.sh
+        container: qc.doc_chili_tough_heron
+  QC.Lic:
+    repos:
+      github.com/cessda/cessda.code.nesstar licensee:
+        commands:
+        - /usr/bin/env sh .sqa/script.ultramarine_tough_walrus.sh
+        container: qc.lic_watermelon_shrewd_butterfly
+  QC.Sec:
+    repos:
+      github.com/cessda/cessda.code.nesstar bandit:
+        commands:
+        - /usr/bin/env sh .sqa/script.lapis_dedicated_octopus.sh
+        container: qc.sec_cinnabar_philosophical_squid
+  QC.Sty:
+    repos:
+      github.com/cessda/cessda.code.nesstar flake8:
+        commands:
+        - /usr/bin/env sh .sqa/script.jade_easygoing_caribou.sh
+        container: qc.sty_marina_audacious_orangutan
+  QC.Uni:
+    repos:
+      github.com/cessda/cessda.code.nesstar pytest:
+        commands:
+        - /usr/bin/env sh .sqa/script.salmon_honest_python.sh
+        container: qc.uni_papaya_whimsical_cassowary
+  QC.Ver:
+    repos:
+      github.com/cessda/cessda.code.nesstar get_git_tags.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.jasmine_productive_seahorse.sh
+        container: qc.ver_pine_enigmatic_koala
+timeout: 5400
